@@ -1,0 +1,6 @@
+.idea
+framework
+.env.json
+go.sum
+/.DS_Store
+/builds
