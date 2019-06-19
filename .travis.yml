@@ -4,12 +4,19 @@ go:
 env:
 - GO111MODULE=on
 script:
+- mv /app/src/artisan.go /app/src/artisan.txt
 - go build -o /app/src/builds/main_linux /app/src/main.go
+-
+- mv /app/src/main.go /app/src/main.txt
+- mv /app/src/artisan.txt /app/src/artisan.go
 - go build -o /app/src/builds/artisan_linux /app/src/artisan.go
+
+- mv /app/src/main.txt /app/src/main.go
 deploy:
   provider: releases
   api_key:
     secure: I6850y+86IAN+Awn0TD4M9UJB5M793QNXdtzgClm2A8vCbum7a2zHi/wkg8cGbRLYQY8ejGn9ZJlOduC39xDDVTAjKcgkX0/zFeXgevZJfR0sQNd7BiNl6lQghERrhA3UItsqdZA8wqbQ96EEMJIfE5/EtKNVKSU7xUWQvzoINW26AGEuK2BwQSkBeF6QFMToTvYFQvszNaC3zMCktkbzah4OPDZznnI2yPV/mCUoWto4+rYswmJXfcdopumKNXoY2fqgmNnNT/qtUetaoWPfviJkqrlpjh3wsXBWzVPNPYUq9gh/1nYCRPd/csWnf/JTuNJqWFEKd69afnLomtcu5lxtNA3Ie0+1wR2HRegafvpLa3XlvL4ZSEU2CFCSrg1wCXVUEs8KGNOFOf2/1PoIO8v7KIIM7//oDw9OypmZnIdZGGmyv/+/L6yXOho3wUiMRx13jBFjvV6x+QBXpePlOCS442xDwxOgTZUPt1PWgRPRn12FxPWcCqx/Ny5j7U1QYaHcnvN1YMb4zRFyCgkgIclWdRbNvAgHr9uOUrtv+OqZP0E/VMyPTA7XjO/fyw/bH+ZmO2zYna68zjGEfK/xD5YhsJuh5gIDWMCixmAdpk/qTyjBujKw3SE9GMIUoHqdsR7D0Rd7vcF3qOwh7ogLAeCbpKJ/75Epc3UT6h1j1k=
+  file_glob: true
   file: "/app/src/builds/*"
   on:
     repo: totoval/crypto-alert
