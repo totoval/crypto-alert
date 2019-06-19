@@ -4,10 +4,9 @@ go:
 env:
 - GO111MODULE=on
 
-before_script:
-  - mv /app/src/artisan.go /app/src/artisan.txt
+
 script:
-- mv /app/src/artisan.txt /app/src/artisan.go
+
 
 - go build -o /app/src/builds/main_linux /app/src/main.go
 - go build -o /app/src/builds/artisan_linux /app/src/artisan.go
