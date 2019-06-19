@@ -1,3 +1,38 @@
+# Crypto Alert
+Help you build your own crypto currency price alert system using [@Totoval](https://github.com/totoval/totoval) and [Pushover](https://pushover.net)
+
+# What is it
+Alert me by Pushover **if `btcusdt`'s price is higher/lower than `5min ago`'s price of `1%`**
+
+# How to Use
+## 0x01 Configure
+1. Set a `pair` like `btcusdt` referred at [here](https://huobiapi.github.io/docs/spot/v1/cn/#0e505d18dc)
+2. Set an interval about which the price of time will be used to be compared with current ticker, for example: 
+    set `5` means will let the program compare the price of `now` and `5min ago`
+3. Set a difference rate, for example: if price is higher/lower than `5min ago`'s price of `1%`, then set the difference to `0.01` 
+
+---
+
+* You could configure it in **command line** with `go run artisan.go crypto:alert btcusdt 5 0.01`  
+* For using **`.env.json`**, just copy `.env.example.json` to `.env.json`, set your env, then rock!
+
+## 0x02 Run
+For `loop`:
+```bash
+go run artisan.go schedule:run
+```
+Or for `once`:
+```bash
+go run artisan.go crypto:alert btcusdt 5 0.01
+```
+
+**Or you could build a binary~, as you wish!**   
+**Thanks for [@Totoval](https://github.com/totoval/totoval)**
+
+---
+---
+---
+
 <p align="center"><img src="https://raw.githubusercontent.com/totoval/art/master/repo_use/logo-with-words-landscape.png?s=200&v=4"></p>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/totoval/totoval.svg)
