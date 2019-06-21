@@ -136,6 +136,11 @@ func (hw *Alert) Handler(arg *cmd.Arg) error {
 }
 
 func (hw *Alert) notify(direction Direction, nowData *TickData) {
+	// every minute should notify once
+	if cache.Has(hw.cacheKey(zone.Now())+"_notified"){
+		return
+	}
+
 	diff, _ := strconv.ParseFloat(hw.difference, 64)
 
 	dataStr, _ := json.Marshal(nowData)
@@ -150,6 +155,8 @@ func (hw *Alert) notify(direction Direction, nowData *TickData) {
 			"message": string(dataStr),
 		},
 	}).Biu()
+
+	cache.Put(hw.cacheKey(zone.Now())+"_notified", true, zone.Now().Add(hw.duration+5*zone.Minute))
 }
 
 func nowData(resp *response) *TickData {
