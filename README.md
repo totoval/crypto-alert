@@ -31,6 +31,9 @@ go run artisan.go crypto:alert btcusdt 5 0.01
 **Or you could build a binary~, as you wish!**   
 **Thanks for [@Totoval](https://github.com/totoval/totoval)**
 
+## 0x03 Or just use our example
+**Just follow the [link](https://pushover.net/subscribe/CryptoAlert-7q6qr9j2qr4mm39) to subscribe a `huobi.pro`-`30-min`-`btcusdt`-`1%UP/DOWN` alert!**
+
 ---
 ---
 ---
