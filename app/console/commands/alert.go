@@ -136,10 +136,8 @@ func (hw *Alert) Handler(arg *cmd.Arg) error {
 }
 
 func (hw *Alert) notify(direction Direction, nowData *TickData) {
-	// every minute should notify once
-	if cache.Has(hw.cacheKey(zone.Now())+"_notified"){
-		return
-	}
+
+	cache.Put("notified", nowData.Price.String(), zone.Now().Add(hw.duration))
 
 	diff, _ := strconv.ParseFloat(hw.difference, 64)
 
@@ -156,7 +154,6 @@ func (hw *Alert) notify(direction Direction, nowData *TickData) {
 		},
 	}).Biu()
 
-	cache.Put(hw.cacheKey(zone.Now())+"_notified", true, zone.Now().Add(hw.duration+5*zone.Minute))
 }
 
 func nowData(resp *response) *TickData {
@@ -203,9 +200,12 @@ func (hw *Alert) initDifference() error {
 }
 
 func (hw *Alert) checkDirection(nowPrice *bigfloat.BigFloat) (Direction, error) {
-	beforePrice := cache.Get(hw.cacheKey(zone.Now().Add(-hw.duration)))
+	beforePrice := cache.Get("notified") // beforeNotifiedPrice  first use before notified price for checking, to avoid notify every interval
 	if beforePrice == nil {
-		return Draw, errors.New("not enough history data")
+		beforePrice = cache.Get(hw.cacheKey(zone.Now().Add(-hw.duration)))
+		if beforePrice == nil {
+			return Draw, errors.New("not enough history data")
+		}
 	}
 
 	//debug.Dump(beforePrice)
