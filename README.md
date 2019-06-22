@@ -1,6 +1,8 @@
 # Crypto Alert
 Help you build your own crypto currency price alert system using [@Totoval](https://github.com/totoval/totoval) and [Pushover](https://pushover.net)
 
+<img src="https://raw.githubusercontent.com/totoval/crypto-alert/master/readme_assets/WechatIMG539.jpeg" alt="pushover" width="300" /> <img src="https://raw.githubusercontent.com/totoval/crypto-alert/master/readme_assets/WechatIMG538.jpeg" alt="huobi.pro" width="300" />
+
 # What is it
 Alert me by Pushover **if `btcusdt`'s price is higher/lower than `5min ago`'s price of `1%`**
 
