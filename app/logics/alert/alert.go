@@ -49,12 +49,7 @@ type TickData struct {
 	Price     bigfloat.BigFloat `json:"price"`
 	Direction string            `json:"direction"`
 }
-type Fetcher interface {
-	Fetch(pair string) (*Response, error)
-}
-type Notifier interface {
-	Notify(pair string, direction Direction, differencePercentage string, price string, rawDataStr string) error
-}
+
 func (alert *alert)Fetch(fetcher Fetcher, notifier Notifier) error {
 	resp, err := fetcher.Fetch(alert.pair)
 	if err != nil {
