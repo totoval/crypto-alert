@@ -5,6 +5,7 @@ import (
 	"github.com/totoval/framework/helpers/zone"
 	"github.com/totoval/framework/logs"
 	"github.com/totoval/framework/utils/validator"
+	"github.com/totoval/framework/sentry"
 
 	"totoval/config"
 	"totoval/resources/lang"
@@ -12,6 +13,7 @@ import (
 
 func Initialize() {
 	config.Initialize()
+	sentry.Initialize()
 	logs.Initialize()
 	zone.Initialize()
 	lang.Initialize() // an translation must contains resources/lang/xx.json file (then a resources/lang/validation_translator/xx.go)
