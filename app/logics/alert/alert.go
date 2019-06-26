@@ -76,7 +76,7 @@ func (alert *alert)Fetch(fetcher Fetcher, notifier Notifier) error {
 
 func (alert *alert) notify(notifier Notifier, direction Direction, nowData *TickData) error {
 
-	cache.Put("notified", nowData.Price.String(), zone.Now().Add(alert.duration))
+	cache.Put(alert.pair + "_notified", nowData.Price.String(), zone.Now().Add(alert.duration))
 
 	diff, _ := strconv.ParseFloat(alert.difference, 64)
 
@@ -129,7 +129,7 @@ func (alert *alert) initDifference() error {
 }
 
 func (alert *alert) checkDirection(nowPrice *bigfloat.BigFloat) (Direction, error) {
-	beforePrice := cache.Get("notified") // beforeNotifiedPrice  first use before notified price for checking, to avoid notify every interval
+	beforePrice := cache.Get(alert.pair + "_notified") // beforeNotifiedPrice  first use before notified price for checking, to avoid notify every interval
 	if beforePrice == nil {
 		beforePrice = cache.Get(alert.cacheKey(zone.Now().Add(-alert.duration)))
 		if beforePrice == nil {
