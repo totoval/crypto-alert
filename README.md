@@ -8,6 +8,32 @@ Alert me by Pushover **if `btcusdt`'s price is higher/lower than `5min ago`'s pr
 
 # How to Use
 ## 0x01 Configure
+
+```bash
+tee ./.env.json <<- "EOF"
+{
+  "APP_NAME": "CryptoAlert",
+  "APP_ENV": "develop",
+  "APP_DEBUG": true,
+  "APP_PORT": 8080,
+  "APP_LOCALE": "en",
+  "APP_KEY": "xxx",
+
+  "CACHE_DRIVER": "memory",
+
+  "ALERT_PROXY": "",
+  "ALERT_SCHEDULE_DURATION": 30,
+  "ALERT_SCHEDULE_PAIR": "btcusdt",
+  "ALERT_SCHEDULE_DIFFERENCE": "0.01",
+  "ALERT_SCHEDULE_INTERVAL": 1,
+
+  "PUSHOVER_TOKEN": "{YOUR-PUSHOVER-TOKEN}",
+  "PUSHOVER_USER": "{YOUR-PUSHOVER-USER}",
+  "PUSHOVER_DEVICE": ""
+}
+EOF
+```
+
 1. Set a `pair` like `btcusdt` referred at [here](https://huobiapi.github.io/docs/spot/v1/cn/#0e505d18dc)
 2. Set an interval about which the price of time will be used to be compared with current ticker, for example: 
     set `5` means will let the program compare the price of `now` and `5min ago`
@@ -19,6 +45,7 @@ Alert me by Pushover **if `btcusdt`'s price is higher/lower than `5min ago`'s pr
 * For using **`.env.json`**, just copy `.env.example.json` to `.env.json`, set your env, then rock!
 
 ## 0x02 Run
+
 For `loop`:
 ```bash
 go run artisan.go schedule:run
@@ -29,6 +56,10 @@ go run artisan.go crypto:alert btcusdt 5 0.01
 ```
 
 **Or you could build a binary~, as you wish!**   
+**For linux:**  
+`./artisan_linux schedule:run`  
+**For Mac:**  
+`./artisan_mac schedule:run`
 
 ## Build your own Crypto-Alert
 * By implement the `Fetcher` Or `Notifier`, you could build your own **Crypto-Alert**
