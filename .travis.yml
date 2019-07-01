@@ -3,7 +3,7 @@ language: go
 os:
   - linux
   - osx
-  - windows
+  #- windows
 
 go:
   - master
@@ -19,5 +19,6 @@ deploy:
     secure: I6850y+86IAN+Awn0TD4M9UJB5M793QNXdtzgClm2A8vCbum7a2zHi/wkg8cGbRLYQY8ejGn9ZJlOduC39xDDVTAjKcgkX0/zFeXgevZJfR0sQNd7BiNl6lQghERrhA3UItsqdZA8wqbQ96EEMJIfE5/EtKNVKSU7xUWQvzoINW26AGEuK2BwQSkBeF6QFMToTvYFQvszNaC3zMCktkbzah4OPDZznnI2yPV/mCUoWto4+rYswmJXfcdopumKNXoY2fqgmNnNT/qtUetaoWPfviJkqrlpjh3wsXBWzVPNPYUq9gh/1nYCRPd/csWnf/JTuNJqWFEKd69afnLomtcu5lxtNA3Ie0+1wR2HRegafvpLa3XlvL4ZSEU2CFCSrg1wCXVUEs8KGNOFOf2/1PoIO8v7KIIM7//oDw9OypmZnIdZGGmyv/+/L6yXOho3wUiMRx13jBFjvV6x+QBXpePlOCS442xDwxOgTZUPt1PWgRPRn12FxPWcCqx/Ny5j7U1QYaHcnvN1YMb4zRFyCgkgIclWdRbNvAgHr9uOUrtv+OqZP0E/VMyPTA7XjO/fyw/bH+ZmO2zYna68zjGEfK/xD5YhsJuh5gIDWMCixmAdpk/qTyjBujKw3SE9GMIUoHqdsR7D0Rd7vcF3qOwh7ogLAeCbpKJ/75Epc3UT6h1j1k=
   file_glob: true
   file: "./builds/*"
+  skip_cleanup: true
   on:
     repo: totoval/crypto-alert
