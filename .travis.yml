@@ -11,7 +11,7 @@ env:
   - GO111MODULE=on
 
 script:
-  - go build -o ./builds/main_$TRAVIS_OS_NAME ./main.go
+  #- go build -o ./builds/main_$TRAVIS_OS_NAME ./main.go
   - go build -o ./builds/artisan_$TRAVIS_OS_NAME ./artisan.go
 deploy:
   provider: releases
