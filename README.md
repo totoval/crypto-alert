@@ -61,12 +61,12 @@ go run artisan.go crypto:alert btcusdt 5 0.01
 **For Mac:**  
 `./artisan_mac schedule:run`
 
-## Build your own Crypto-Alert
+## 0x03 Or just use our example
+**Just follow the [link](https://pushover.net/subscribe/CryptoAlert-7q6qr9j2qr4mm39) to subscribe a `huobi.pro`-`30-min`-`btcusdt`-`1%UP/DOWN` alert!**
+
+# Implement with Yours
 * By implement the `Fetcher` Or `Notifier`, you could build your own **Crypto-Alert**
 * `Fetcher`: `app/logics/alert/fetchers`
 * `Notifier`: `app/logics/alert/notifiers`
 
 **Thanks for [@Totoval](https://github.com/totoval/totoval)**
-
-## 0x03 Or just use our example
-**Just follow the [link](https://pushover.net/subscribe/CryptoAlert-7q6qr9j2qr4mm39) to subscribe a `huobi.pro`-`30-min`-`btcusdt`-`1%UP/DOWN` alert!**
