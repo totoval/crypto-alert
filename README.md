@@ -65,7 +65,7 @@ go run artisan.go crypto:alert btcusdt 5 0.01
 **Just follow the [link](https://pushover.net/subscribe/CryptoAlert-7q6qr9j2qr4mm39) to subscribe a `huobi.pro`-`30-min`-`btcusdt`-`1%UP/DOWN` alert!**
 
 # Implement with Yours
-* By implement the `Fetcher` Or `Notifier`, you could build your own **Crypto-Alert**
+By implement the `Fetcher` Or `Notifier`, you could build your own **Crypto-Alert**  
 * `Fetcher`: `app/logics/alert/fetchers`
 * `Notifier`: `app/logics/alert/notifiers`
 
