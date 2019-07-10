@@ -4,7 +4,7 @@ import (
 	"github.com/totoval/framework/cache"
 	"github.com/totoval/framework/helpers/zone"
 	"github.com/totoval/framework/logs"
-	"github.com/totoval/framework/utils/validator"
+	"github.com/totoval/framework/validator"
 	"github.com/totoval/framework/sentry"
 
 	"totoval/config"

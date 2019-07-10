@@ -1,9 +1,8 @@
 package models
 
 import (
-	"github.com/gin-gonic/gin"
-
 	"github.com/totoval/framework/helpers/m"
+	"github.com/totoval/framework/helpers/ptr"
 	"github.com/totoval/framework/helpers/zone"
 	"github.com/totoval/framework/model"
 )
@@ -27,6 +26,20 @@ func (user *User) Default() interface{} {
 	return User{}
 }
 
+func (user *User) Scan(userId uint) error {
+	newUser := User{
+		ID: ptr.Uint(userId),
+	}
+	if err := m.H().First(&newUser, false); err != nil {
+		return err
+	}
+	*user = newUser
+	return nil
+}
+func (user *User) Value() interface{} {
+	return user
+}
+
 func (user *User) User() *User {
 	//model.DB().Where("user_id = ?", 1).Find(user)
 	return user
@@ -39,7 +52,7 @@ func (user *User) ObjArr(filterArr []model.Filter, sortArr []model.Sort, limit i
 	}
 	return outArr, nil
 }
-func (user *User) ObjArrPaginate(c *gin.Context, perPage uint, filterArr []model.Filter, sortArr []model.Sort, limit int, withTrashed bool) (pagination model.Pagination, err error) {
+func (user *User) ObjArrPaginate(c model.Context, perPage uint, filterArr []model.Filter, sortArr []model.Sort, limit int, withTrashed bool) (pagination model.Pagination, err error) {
 	var outArr []User
 	filter := model.Model(*m.H().Q(filterArr, sortArr, limit, withTrashed))
 	return filter.Paginate(&outArr, c, perPage)
