@@ -18,7 +18,7 @@ func (po *Pushover)Notify(pair string, direction alert.Direction, differencePerc
 	if direction == alert.Up {
 		directionStr = "📈"
 	}else{
-		directionStr = "️📉"
+		directionStr = "📉"
 	}
 
 	_, err := biu.Ready(biu.MethodPost, PushOverMessageUrl, &biu.Options{
