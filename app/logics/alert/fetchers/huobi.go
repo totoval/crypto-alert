@@ -10,16 +10,14 @@ import (
 	"totoval/app/logics/alert"
 )
 
-
 const (
 	HuobiMarketTradeBaseUrl = "https://api.huobi.pro/market/trade"
 )
 
 type HuoBi struct {
-
 }
 
-func (hb *HuoBi)Fetch(pair string)(resp *alert.Response, err error){
+func (hb *HuoBi) Fetch(pair string) (resp *alert.Response, err error) {
 	statusCode, err := biu.Ready(biu.MethodGet, HuobiMarketTradeBaseUrl, &biu.Options{
 		ProxyUrl: config.GetString("alert.proxy"),
 		UrlParam: &biu.UrlParam{

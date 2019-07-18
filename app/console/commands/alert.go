@@ -16,7 +16,6 @@ func init() {
 	cmd.Add(&Alert{})
 }
 
-
 type Alert struct {
 }
 
@@ -27,7 +26,6 @@ func (hw *Alert) Command() string {
 func (hw *Alert) Description() string {
 	return "Alert crypto ticker"
 }
-
 
 func (hw *Alert) Handler(arg *cmd.Arg) error {
 	pair, err := arg.Get("pair")
@@ -57,7 +55,7 @@ func (hw *Alert) Handler(arg *cmd.Arg) error {
 	if err != nil {
 		return err
 	}
-	a, err := alert.New(*pair, zone.Duration(durationInt64) * zone.Minute, *difference)
+	a, err := alert.New(*pair, zone.Duration(durationInt64)*zone.Minute, *difference)
 	if err != nil {
 		return err
 	}
@@ -65,4 +63,3 @@ func (hw *Alert) Handler(arg *cmd.Arg) error {
 	// you can diy your own Fetchers or Notifiers
 	return a.Fetch(new(fetchers.HuoBi), new(notifiers.Pushover))
 }
-

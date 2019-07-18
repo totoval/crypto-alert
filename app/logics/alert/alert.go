@@ -14,12 +14,11 @@ import (
 	"strings"
 )
 
-
 type alert struct {
-	pair           string
-	duration       zone.Duration
-	difference     string
-	
+	pair       string
+	duration   zone.Duration
+	difference string
+
 	upDifference   bigfloat.BigFloat
 	downDifference bigfloat.BigFloat
 }
@@ -29,7 +28,6 @@ func New(pair string, duration zone.Duration, difference string) (*alert, error)
 	err := a.initDifference()
 	return a, err
 }
-
 
 type Response struct {
 	Status string `json:"status"`
@@ -50,7 +48,7 @@ type TickData struct {
 	Direction string            `json:"direction"`
 }
 
-func (alert *alert)Fetch(fetcher Fetcher, notifier Notifier) error {
+func (alert *alert) Fetch(fetcher Fetcher, notifier Notifier) error {
 	resp, err := fetcher.Fetch(alert.pair)
 	if err != nil {
 		return err
@@ -76,13 +74,13 @@ func (alert *alert)Fetch(fetcher Fetcher, notifier Notifier) error {
 
 func (alert *alert) notify(notifier Notifier, direction Direction, nowData *TickData) error {
 
-	cache.Put(alert.pair + "_notified", nowData.Price.String(), zone.Now().Add(alert.duration))
+	cache.Put(alert.pair+"_notified", nowData.Price.String(), zone.Now().Add(alert.duration))
 
 	diff, _ := strconv.ParseFloat(alert.difference, 64)
 
 	dataStr, _ := json.Marshal(nowData)
 
-	return notifier.Notify( strings.ToUpper(alert.pair), direction, fmt.Sprintf("%.2f%%", diff * 100), nowData.Price.String(), string(dataStr))
+	return notifier.Notify(strings.ToUpper(alert.pair), direction, fmt.Sprintf("%.2f%%", diff*100), nowData.Price.String(), string(dataStr))
 }
 
 func nowData(resp *Response) *TickData {
