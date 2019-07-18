@@ -1,4 +1,12 @@
 # Crypto Alert
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/totoval/crypto-alert.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/totoval/crypto-alert.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/totoval/crypto-alert)](https://goreportcard.com/report/github.com/totoval/crypto-alert)
+![Travis (.org)](https://img.shields.io/travis/totoval/crypto-alert.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/totoval/crypto-alert.svg)
+![GitHub](https://img.shields.io/github/license/totoval/crypto-alert.svg)
+
+## About Crypto Alert
 Help you build your own crypto currency price alert system using [@Totoval](https://github.com/totoval/totoval) and [Pushover](https://pushover.net)
 
 <img src="https://raw.githubusercontent.com/totoval/crypto-alert/master/readme_assets/WechatIMG539.jpeg" alt="pushover" width="300" /> <img src="https://raw.githubusercontent.com/totoval/crypto-alert/master/readme_assets/WechatIMG538.jpeg" alt="huobi.pro" width="300" />
